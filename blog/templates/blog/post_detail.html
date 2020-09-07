@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
-  <article class="media content-section">
+  <article class="media content-section class1">
     <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
     <div class="media-body">
       <div class="article-metadata">
@@ -8,13 +8,38 @@
         <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
         {% if object.author == user %}
           <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Edit</a>
             <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
           </div>
         {% endif %}
       </div>
       <h2 class="article-title">{{ object.title }}</h2>
       <p class="article-content">{{ object.content }}</p>
+      <strong> Replies/Answers...</strong>
+            <div class="media-body border-top" >
+
+              {% if not post.answers.all %}
+              Nothing Yet ..<hr>
+              <a class="btn btn-outline-danger btn-sm ml-3"  style="font-size: 0.8rem;" href="{% url 'add-comment' %}">Add one</a>
+              {% else %}
+              
+              {% for answer in post.answers.all %}
+              
+              <span style="font-size:0.8rem">
+                <b>By : </b> {{answer.name}}  <b>on</b> {{answer.date_posted}}
+
+              </span>
+              
+              <div class="media-body"  style="font-size:0.6rem">
+              {{answer.body}}
+              </div>
+              {% endfor %}
+              {% endif %}
+            </div>
+         
+          <hr>
+            </div>
     </div>
+    
   </article>
 {% endblock content %}

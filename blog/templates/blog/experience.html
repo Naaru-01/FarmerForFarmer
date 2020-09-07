@@ -1,17 +1,47 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <h1 class="mb-3">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
     {% for post in posts %}
-        <article class="media content-section">
+        <article class="media content-section class1">
           <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small> 
+              
             </div>
-            <h4><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4>
-            <p class="article-content" style="font-size: 0.9rem;">{{ post.content }}</p>
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+
+            
+          <strong> Replies/Answers...</strong>
+          <div class="media-body border-top" >
+
+            {% if not post.comments.all %}
+            Nothing Yet ....
+            {% else %}
+            
+                  {% for comment in post.comments.all %}
+            
+                      <span style="font-size:0.8rem">
+                      <b>By : </b> {{comment.Your_name}}  <b>on</b> {{comment.date_posted}}</span>
+            
+                    <div class="media-body"  style="font-size:0.6rem">
+                      {{comment.Reply}}
+
+                      </div>
+                      <hr>
+                  {% endfor %}
+
+            {% endif %}
+            <a class="btn btn-outline-dark mt-1 btn-sm"  style="font-size: 0.8rem;" href="{% url 'add-comment' %}">Reply/Answer !</a>
           </div>
+       
+        <hr>
+          </div>
+
+          </div>
+
+
         </article>
     {% endfor %}
     {% if is_paginated %}
@@ -33,6 +63,6 @@
         <a class="btn btn-outline-dark mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
         <a class="btn btn-outline-dark mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
       {% endif %}
-
+         
     {% endif %}
 {% endblock content %}

@@ -1,83 +1,351 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    {% if title %}
-        <title>Django Blog - {{ title }}</title>
-    {% else %}
-        <title>Django Blog</title>
-    {% endif %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+  {% if title %}
+  <title>FarmerForFarmer - {{ title }}</title>
+  {% else %}
+  <title>FarmerForFarmer </title>
+  {% endif %}
+
+
+
+
+  <style>
+    body {
+      background-color:azure;
+      opacity: 1;
+
+    }
+
+    .img-fluid {
+      width: 100%;
+      height: 475px;
+    }
+
+    .container-fluid {
+
+      background-image: url('/static/images/nature-5267953__480.jpg');
+      background-repeat:repeat;
+    }
+
+    .footer {
+
+      margin: auto;
+      width: 100%;
+      padding: 10px;
+      background-color: black;
+      color: white;
+    }
+
+    #Contact {
+      margin-left: -20px;
+      width: 50%;
+      padding: 10px;
+    }
+
+    #features {
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+
+    }
+
+    .card:hover {
+      background-color: rgb(197, 238, 192);
+      border-color: black;
+      border-radius: 10px;
+      border-width: 2px;
+    }
+
+    .card {
+      background-image: url('/static/images/background-2995826__480.webp');
+
+      background-color: green;
+      animation-name: star;
+      animation-duration: 1.5s;
+      animation-timing-function: linear;
+      animation-delay: 0s;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+
+      animation-play-state: running;
+
+    }
+
+
+    .nav-link:hover {
+      background-color: black;
+      font-size: 20px;
+    }
+
+    .btn:hover {
+      font-size: 20px;
+    }
+
+    .class1{
+      background-image: url('/static/images/background-2995826__480.webp');
+
+    }
+
+    #noHover:hover {
+
+      background-color: white;
+    }
+
+    #noHover {
+
+      color: unset;
+      background: white;
+      animation: none;
+      border: unset
+    }
+
+    #bak-img {
+
+      background-image: url('/static/images/cereals-5399962__480.jpg');
+    }
+
+    @keyframes star {
+
+      0% {
+        border: 3px hidden rgb(0, 0, 0);
+        border-radius: 3px;
+
+
+      }
+
+      100% {
+        border: 3px solid rgb(0, 0, 0);
+      }
+
+    }
+  </style>
 </head>
-<body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Django Blog</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-            </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-              {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
-                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-              {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-          {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
-          {% block content %}{% endblock %}
-        </div>
-        <div class="col-md-4">
-          <div class="content-section">
-            <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
-              </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-    </main>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<body style="margin-top: 0px;">
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light btn-outline-success  " style="background-color: rgb(49, 58, 66);">
+
+      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            FarmerForFarmer
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+            <a class="dropdown-item" href="{% url 'post-create' %}">SHARE YOUR EXPERIENCE</a>
+            <a class="dropdown-item" href="{% url 'blog-experience' %}">VIEW ALL EXPERIENCES</a>
+            {% if user.is_authenticated %}
+            <a class="dropdown-item" href="{% url 'post-create' %}">ASK A QUESTION ?</a>
+            <a class="dropdown-item" href="{% url 'add-comment' %}">Give Answer for Question </a>
+
+
+            {% endif %}
+
+
+
+
+
+          </div>
+        </div>
+
+        <ul class="navbar-nav mr-auto mt-0 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'blog-home1'%}" style="color:white">Home</a>
+          </li>
+
+
+          <li class="nav-item">
+
+            <div class="dropdown">
+              <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="color:white;">Quick Links</a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                <a class="dropdown-item" href="http://agriculture.gov.in/" target="_blank">Ministy of Agriculture and
+                  Farmers' Welfare</a>
+                <a class="dropdown-item" href="http://farmer.gov.in/" target="_blank">Farmer's Portal.</a>
+                <a class="dropdown-item" href="http://agricoop.gov.in/" target="_blank">DAC&amp;FW Portal.</a>
+                <a class="dropdown-item" href="http://mkisan.gov.in/" target="_blank">M
+                  Kisan Portal.</a>
+
+
+
+                <a class="dropdown-item" href="http://enam.gov.in/NAM/home/index.html" target="_blank">National
+                  Agriculture Marketing Portal.</a>
+
+                <a class="dropdown-item" href="http://farmech.dac.gov.in/" target="_blank">National Portal on
+                  Machanization &amp; Technology.</a>
+                <a class="dropdown-item" href="http://seednet.gov.in/" target="_blank">Seednet India Portal.</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="https://icar.org.in/node/1786" style="color:white;">HELP</a>
+          </li>
+          <li class="nav-item">
+
+            {% if user.is_authenticated %}
+
+          <li class="nav-item">
+            <a class="nav-link  " href="{% url 'profile' %}" style="color:white; font-family: cursive;">Profile</a>
+          </li>
+          <li class="nav-item">
+
+            <a class="nav-link  " href="{% url 'logout' %}" style="color:white; font-family: cursive;">Logout</a>
+          </li>
+          {% else %}
+          <a class="nav-link  " href="{% url 'login' %}" style="color:white; font-family: cursive;">Sign in</a>
+          <li class="nav-item">
+            <a class="nav-link  " href="{% url 'register' %}" style="color:white; font-family: cursive;">Register</a>
+
+          </li>
+          {% endif %}
+
+
+
+          <div class="ml-3 " id="google_translate_element"></div>
+
+
+          <script type="text/javascript">
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+            }
+          </script>
+
+          <script type="text/javascript"
+            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+        </ul>
+        
+      </div>
+
+    </nav>
+
+
+  </header>
+
+  <main >
+
+    {% if messages %}
+
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+
+    {% endif %}
+
+    {% block content %}
+
+    {% endblock %}
+
+  </main>
+
+
+
+  <footer style="height: 100%; width:100%">
+    <div class="footer  row  ">
+
+      <div id="Contact">
+
+        <ul>
+          <h3>Contact us @</h3>
+
+          <li>
+
+            <a href="#" style="color: white; text-decoration: none;padding: 10px;">Email :
+              *******@gmail.com</a>
+          </li>
+
+          <li>
+
+
+            <span class="fa fa-phone" style="color: white; text-decoration: none;padding: 10px;">Phone : +91
+              93********</span>
+          </li>
+
+          <li>
+
+            <a href="#" class="fa fa-facebook" style="color: white; text-decoration: none;padding: 10px">facebook</a>
+          </li>
+
+
+          <li>
+
+            <a href="#" class="fa fa-instagram" style="color: white; text-decoration: none;padding: 10px;">Instagram</a>
+          </li>
+
+          <li>
+            <a href="#" class="fa fa-twitter" style="color: white; text-decoration: none;padding: 10px;">Twitter</a>
+
+          </li>
+
+        </ul>
+      </div>
+
+
+      <div id="features">
+        <ul>
+          <h3>KEY Features</h3>
+          <li>-> Ask new question</li>
+          <li>-> Visit site in any Language</li>
+          <li>-> Share Experiences</li>
+          <li>-> Personalized Profile</li>
+          <li>-> Get Weather </li>
+        </ul>
+      </div>
+
+
+    </div>
+    <h3 style="text-align: center;font-size:10px; font-family:cursive; color:black; padding: 10px 0px 0px 0px; ">Created
+      By: NARAYAN</h3>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
 </body>
+
 </html>

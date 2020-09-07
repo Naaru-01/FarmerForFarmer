@@ -8,22 +8,31 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
+from .models import Post ,Comment
 
 
 def home(request):
     context = {
         'posts': Post.objects.all()
     }
-    return render(request, 'blog/home.html', context)
+    return render(request, 'blog/experience.html', context)
+
+
+class AddCommentView(CreateView):
+    model = Comment
+    template_name = 'blog/answers.html'
+    fields = '__all__'
+    success_url = '/'
 
 
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'blog/experience.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 5
+
+
 
 
 class UserPostListView(ListView):
@@ -39,6 +48,8 @@ class UserPostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
+
+
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -77,4 +88,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
+    return render(request, 'blog/home1.html', {'title': 'Home'})
