@@ -25,12 +25,12 @@ SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 #SECRET_KEY = os.environ.get('SECRET_KEY')
 
 #SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
+#DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
 
-ALLOWED_HOSTS = ['farmerforfarmer.herokuapp.com']
+#ALLOWED_HOSTS = ['farmerforfarmer.herokuapp.com']
 
-#DEBUG =True
-#ALLOWED_HOSTS =[]
+DEBUG =True
+ALLOWED_HOSTS =[]
 
 
 # Application definition
