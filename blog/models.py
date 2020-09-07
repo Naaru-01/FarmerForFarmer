@@ -24,7 +24,7 @@ class Comment(models.Model):
     Question = models.ForeignKey(Post,related_name="comments",on_delete=models.CASCADE)
     Your_name=models.CharField(max_length=250)
     Reply=models.TextField()
-    date_posted=models.DateTimeField(auto_now_add=True)
+    date_posted=models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.Question,self.Your_name

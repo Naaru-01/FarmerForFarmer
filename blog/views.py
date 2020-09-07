@@ -21,7 +21,8 @@ def home(request):
 class AddCommentView(CreateView):
     model = Comment
     template_name = 'blog/answers.html'
-    fields = '__all__'
+    fields = ['Question', 'Your_name','Reply']
+
     success_url = '/'
 
 
