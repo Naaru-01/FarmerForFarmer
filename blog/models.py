@@ -27,4 +27,4 @@ class Comment(models.Model):
     date_posted=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.Question)+str(self.Your_name)
+        return self.Question,self.Your_name
