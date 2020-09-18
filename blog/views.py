@@ -21,7 +21,7 @@ def home(request):
 class AddCommentView(CreateView):
     model = Comment
     template_name = 'blog/answers.html'
-    fields = ['Question', 'Your_name','Reply']
+    fields = ['Select_Question', 'Your_name','Reply']
 
     success_url = '/'
 
@@ -64,7 +64,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content',]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -90,3 +90,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def about(request):
     return render(request, 'blog/home1.html', {'title': 'Home'})
+
+
+
+

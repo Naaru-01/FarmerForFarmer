@@ -1,0 +1,94 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+
+{% if submitbutton == 'Search' and request.GET.q != '' %}
+{% if results %}
+<h4><strong>Results for <em> "{{ request.GET.q }}" </em></strong></h4>
+
+
+{% for result in results %}
+<article class="media content-section class1">
+    <img class="rounded-circle article-img" src="{{ result.author.profile.image.url }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="{% url 'user-posts' result.author.username %}">{{ result.author }}</a>
+        <small class="text-muted"><em> <strong>Joined On :</strong></em> {{ result.date_posted|date:"F d, Y" }}</small> 
+        
+      </div>
+      <h4><a class="article-title" href="{% url 'post-detail' result.id %}">{{ result.title }}</a></h4>
+      <p class="article-content">{{ result.content }}</p>
+
+      
+    <strong> Replies/Answers...</strong>
+    <div class="media-body border-top" >
+
+      {% if not result.comments.all %}
+      Nothing Yet ....
+      {% else %}
+      
+            {% for comment in result.comments.all %}
+      
+                <span style="font-size:0.8rem">
+                <b>By : </b> {{comment.Your_name}}  <b>on</b> {{comment.date_posted}}</span>
+      
+              <div class="media-body"  style="font-size:0.6rem">
+                {{comment.Reply}}
+
+                </div>
+                <hr>
+            {% endfor %}
+
+      {% endif %}
+      <a class="btn btn-outline-dark mt-1 btn-sm"  style="font-size: 0.8rem;" href="{% url 'add-comment' %}">Reply/Answer !</a>
+    </div>
+ 
+  <hr>
+    </div>
+
+    </div>
+
+
+  </article>
+<br/>
+
+{% endfor %}
+{% else %}
+<div class="media-body"  style="font-size:2rem; width:100%; height: 20rem;">
+
+    Oops ! Nothing to show for <em>"{{ request.GET.q }}" ! </em> 
+</div>
+{% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+ 
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-dark mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-dark mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-dark mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-dark mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-dark mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-dark mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+         
+    {% endif %}
+{% endblock content %}

@@ -25,9 +25,11 @@ SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 #SECRET_KEY = os.environ.get('SECRET_KEY')
 
 #SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
+#DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://farmerforfarmer.herokuapp.com']
+ALLOWED_HOSTS =[]
+#ALLOWED_HOSTS = ['https://farmerforfarmer.herokuapp.com']
 
 
 # Application definition
@@ -36,6 +38,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'search.apps.SearchConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

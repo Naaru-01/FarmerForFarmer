@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
+from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -47,7 +48,12 @@ urlpatterns = [
          ),
          name='password_reset_complete'),
     path('', include('blog.urls')),
+
+    url(r'^search/', include('search.urls', namespace='search')),
+   
 ]
+
+
 
 
 if settings.DEBUG:

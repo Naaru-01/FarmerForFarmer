@@ -52,6 +52,7 @@
       padding: 10px;
       background-color: black;
       color: white;
+      background-image: linear-gradient(to bottom , black,black,black, white);
     }
 
     #Contact {
@@ -245,9 +246,15 @@
           <script type="text/javascript"
             src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-
+       
         </ul>
-        
+        <form  class="form-inline my-2 my-lg-0" 
+            action="{% url 'search:searchposts' %}" method="GET" value="{{request.GET.q}}">
+
+               <input  class="form-control mr-sm-2" type="text" name="q" value="{{request.GET.q}}" placeholder="Search "/>
+
+              <input  class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search"/>
+        </form>
       </div>
 
     </nav>
@@ -276,13 +283,13 @@
 
 
 
-  <footer style="height: 100%; width:100%">
-    <div class="footer  row  ">
+  <footer style="height: 100%; width:100%;">
+    <div class="footer  row  " style="font-size: 1rem;"> 
 
       <div id="Contact">
 
         <ul>
-          <h3>Contact us @</h3>
+          <h4>Contact us @</h4>
 
           <li>
 
@@ -317,9 +324,9 @@
       </div>
 
 
-      <div id="features">
+      <div id="features" style="font-size: 1rem;">
         <ul>
-          <h3>KEY Features</h3>
+          <h4>KEY Features</h4>
           <li>-> Ask new question</li>
           <li>-> Visit site in any Language</li>
           <li>-> Share Experiences</li>
