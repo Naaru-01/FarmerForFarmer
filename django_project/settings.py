@@ -25,11 +25,19 @@ SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 #SECRET_KEY = os.environ.get('SECRET_KEY')
 
 #SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 #DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
 DEBUG = True
 
 ALLOWED_HOSTS =[]
 #ALLOWED_HOSTS = ['https://farmerforfarmer.herokuapp.com']
+=======
+DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
+#DEBUG = True
+
+ALLOWED_HOSTS = ['http://farmerforfarmer.herokuapp.com']
+#ALLOWED_HOSTS =['http://localhost:8000']
+>>>>>>> 1ed154c95fdd210cf14505509785688f7a893e25
 
 
 # Application definition
@@ -87,7 +95,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
