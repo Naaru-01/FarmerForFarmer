@@ -24,13 +24,7 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('home/', views.about, name='blog-home1'),
-<<<<<<< HEAD
     
    
-=======
-
-
-
->>>>>>> 1ed154c95fdd210cf14505509785688f7a893e25
 
 ]
