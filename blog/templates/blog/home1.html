@@ -1,11 +1,27 @@
 {% extends "blog/base.html" %}
 {% block content %}
 
-
+<h6  style="font-size: 0.7rem;" class="an mt-0 mb-0 alert alert-primary alert-dismissible fade show" role="alert">
+    <strong class="alert-heading"> Hi Visitors ! <br> This is Farmer's Interaction Website </strong> 
+    <br>
+     
+    Through this project, I aimed to develop an interactive platform where farmers can interact with agriculture experts and other farmers to solve their queries. They can ask a Question,suggest Solutions, and can also share their success/failure experiences. Also most of the farmers can view this website in their native languages..  :) 
+    <br>
+    <br> 
+    I think, You should check in on some of those fields. Isn't it 
+    <br>
+    <p> To start use this website  more efficiently, hit<b> top-left corner button</b> <em>FarmerForFarmer</em><br></p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</h6>
 
 <div class="container-fluid row  mr-auto   " style="margin-left: auto; ;">
+    
 
+   
 
+    
     <div class="card  mt-5  mb-4 ml-auto mr-auto" style="width: 12rem; height: 8rem;">
 
         <div class="card-body  " id="f1">
@@ -148,7 +164,10 @@
     </div>
    
 
-   <a class="btn btn-success " href="{% url 'blog-experience' %}">VIEW ALL EXPERIENCES</a>
+
+    <a class="btn btn-success btn-sm" href="{% url 'blog-experience' %}">VIEW  ALL  EXPERIENCES</a>
+    <a class="btn btn-success btn-sm" href="{% url 'post-create' %}">SHARE YOUR EXPERIENCE</a>
+
    <hr style="border-bottom: 1px solid black;">
 </div>
 

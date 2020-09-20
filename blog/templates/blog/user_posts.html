@@ -9,6 +9,8 @@
               <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
             </div>
+            <div class="card-image" >
+              <img class="img-fluid  rounded" style="width: 75%; height: 50%;" src="{{ post.image.url }}"></div>
             <h4><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4>
             <p class="article-content" style="font-size: 0.9rem;">{{ post.content }}</p>
           </div>

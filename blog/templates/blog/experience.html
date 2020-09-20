@@ -9,6 +9,8 @@
               <small class="text-muted"><em> <strong>Joined On :</strong></em> {{ post.date_posted|date:"F d, Y" }}</small> 
               
             </div>
+            <div class="card-image" >
+              <img class="img-fluid rounded" style="width: 75%; height: 50%;" src="{{ post.image.url }}"></div>
             <h4><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4>
             <p class="article-content" >{{ post.content }}</p>
 

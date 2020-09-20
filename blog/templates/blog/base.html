@@ -52,8 +52,8 @@
       padding: 10px;
       background-color: black;
       color: white;
-      background-image: linear-gradient(to bottom , black,black, white);
-      border-bottom: 3px solid purple;
+      background-image: linear-gradient(to bottom , black,black,black,black, white);
+      border-bottom: 2px solid purple;
     }
 
     #Contact {
@@ -154,8 +154,8 @@
         aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon "></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <div class="dropdown">
+      <div  class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div  class="dropdown">
           <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             FarmerForFarmer
@@ -252,18 +252,19 @@
         <form  class="form-inline my-2 my-lg-0" 
             action="{% url 'search:searchposts' %}" method="GET" value="{{request.GET.q}}">
 
-               <input  class="form-control mr-sm-2" type="text" name="q" value="{{request.GET.q}}" placeholder="Search "/>
+               <input  class="form-control mr-sm-2 btn-sm" type="text" name="q" value="{{request.GET.q}}" placeholder="Search "/>
 
-              <input  class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search"/>
+              <input  class="btn btn-outline-success my-2 my-sm-0 btn-sm" type="submit" name="submit" value="Search"/>
         </form>
       </div>
 
     </nav>
 
-
+  
   </header>
 
   <main >
+
 
     {% if messages %}
 
@@ -279,6 +280,8 @@
     {% block content %}
 
     {% endblock %}
+
+ 
 
   </main>
 
@@ -338,7 +341,7 @@
 
 
     </div>
-    <h3 style=" background-image: linear-gradient(to bottom right , white,azure);text-align: center;font-size:10px; font-family:cursive; color:black; padding: 10px 0px 0px 0px; ">Created
+    <h3 style=" background-image: linear-gradient(to bottom right , white,azure);text-align: center;font-size:20px; font-family:monospace; color:black; padding: 10px 0px 0px 0px; ">Created
       By: NARAYAN</h3>
   </footer>
 
