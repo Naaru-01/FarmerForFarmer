@@ -13,6 +13,12 @@
               <img class="img-fluid  rounded" style="width: 75%; height: 50%;" src="{{ post.image.url }}"></div>
             <h4><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4>
             <p class="article-content" style="font-size: 0.9rem;">{{ post.content }}</p>
+            {% if post.author == user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Edit</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' post.id %}">Delete</a>
+          </div>
+            {% endif %}
           </div>
         </article>
     {% endfor %}
