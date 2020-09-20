@@ -7,10 +7,11 @@
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
+          
         </div>
         <div>
           
-          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'user-posts' user.username %}">My Posts</a>
+          
           
         
         
@@ -20,7 +21,7 @@
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset class="form-group">
-              <legend class="border-bottom mb-4">Profile Info</legend>
+              <legend class="border-bottom mb-4">Profile Info <br> <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'user-posts' user.username %}">My Posts</a></legend>
               {{ u_form|crispy }}
           <span class="A btn btn-danger" style="font-size: smaller;">Profile Picture</span> {{ p_form|crispy }}
              
