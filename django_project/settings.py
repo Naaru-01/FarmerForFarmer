@@ -27,11 +27,7 @@ SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 #SECURITY WARNING: don't run with debug turned on in production!
 
 #DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
-<<<<<<< HEAD
 DEBUG = True
-=======
-DEBUG = False
->>>>>>> 3a987862ac223c5bc6376ad8ac1d4c89c38e10f4
 
 #ALLOWED_HOSTS =[]
 ALLOWED_HOSTS = ['https://farmerforfarmer.herokuapp.com','']
