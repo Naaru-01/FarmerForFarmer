@@ -6,3 +6,6 @@ This is Farmer's Interaction Website Through this project, I aimed to develop an
 
 
 You can try live experience here : https://farmerforfarmer.herokuapp.com/
+
+![farm](https://user-images.githubusercontent.com/68388179/125942131-798d62cc-f93c-4d6d-ab7c-c9f03e78802a.png)
+# FarmerForFarmer HOME SCREEN
